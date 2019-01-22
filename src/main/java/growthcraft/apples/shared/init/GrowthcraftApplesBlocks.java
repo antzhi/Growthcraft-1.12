@@ -1,5 +1,6 @@
 package growthcraft.apples.shared.init;
 
+import growthcraft.apples.common.block.BlockApple;
 import growthcraft.apples.common.block.BlockAppleLeaves;
 import growthcraft.cellar.shared.definition.BlockBoozeDefinition;
 import growthcraft.core.shared.definition.BlockDefinition;
@@ -8,7 +9,7 @@ import net.minecraft.block.BlockSlab;
 
 public class GrowthcraftApplesBlocks {
 
-    public static BlockDefinition blockApple;
+    public static BlockTypeDefinition<BlockApple> blockApple;
     public static BlockDefinition blockAppleDoor;
     public static BlockDefinition blockAppleFence;
     public static BlockDefinition blockAppleFenceGate;

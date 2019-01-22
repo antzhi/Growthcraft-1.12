@@ -1,7 +1,9 @@
 package growthcraft.apples.common.block;
 
+import growthcraft.apples.common.compat.dynamictrees.DynamicTreesCompat;
 import growthcraft.apples.shared.Reference;
 import growthcraft.apples.shared.init.GrowthcraftApplesBlocks;
+import growthcraft.core.shared.compat.Compat;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLeaves;
@@ -38,8 +40,10 @@ public class BlockAppleLeaves extends BlockLeaves implements IGrowable {
 	public static final int LEAVES_COLOR = 0x58e21d; // 0x4fcb1a; // 0x48B518;
 	
 	// TODO: Make fields configurable
-	private static final int APPLE_CHECK_AREA = 3;
-	private static final int MAX_APPLES_IN_AREA = 2;
+	public static final int APPLE_CHECK_AREA = 3;
+	public static final int MAX_APPLES_IN_AREA = 2;
+	public static final int APPLE_DT_DISTANCE = 4;	// Only used for dynamic trees.
+	public static final int APPLE_DT_FRUIT_RADIUS = 4;   // Only used for dynamic trees.
 	
     public BlockAppleLeaves(String unlocalizedName) {
         this.setUnlocalizedName(unlocalizedName);
@@ -71,6 +75,16 @@ public class BlockAppleLeaves extends BlockLeaves implements IGrowable {
 	public EnumType getWoodType(int meta) {
 		// NOTE: Is only used by ItemLeaves. 
 		return null;
+	}
+	
+	public static boolean isAppleLeaves(IBlockState state) {
+		if( state.getBlock() instanceof BlockAppleLeaves )
+			return true;
+		if( Compat.isModAvailable_DynamicTrees() ) {
+			if( DynamicTreesCompat.isAppleLeaves(state) )
+				return true;
+		}
+		return false;
 	}
     
     ///////

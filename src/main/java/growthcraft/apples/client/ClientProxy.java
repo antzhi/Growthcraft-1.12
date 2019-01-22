@@ -2,7 +2,7 @@ package growthcraft.apples.client;
 
 import growthcraft.apples.common.CommonProxy;
 import growthcraft.apples.common.Init;
-import growthcraft.apples.common.compat.dynamictrees.DynamicTreesInit;
+import growthcraft.apples.common.compat.dynamictrees.DynamicTreesCompat;
 import growthcraft.apples.shared.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.shared.init.GrowthcraftApplesItems;
 import growthcraft.core.shared.compat.Compat;
@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy {
 		Init.registerBlockColorHandlers();
 		Init.registerItemColorHandlers();
         if( Compat.isModAvailable_DynamicTrees() )
-        	DynamicTreesInit.onInitColorHandler();
+        	DynamicTreesCompat.onInitColorHandler();
         registerSpecialRenders();
 	}
 	
@@ -41,7 +41,7 @@ public class ClientProxy extends CommonProxy {
     public void registerStateMappers() {
     	Init.setCustomBlockStateMappers();
         if( Compat.isModAvailable_DynamicTrees() )
-        	DynamicTreesInit.onSetStateMappers();
+        	DynamicTreesCompat.onSetStateMappers();
     }
 
 }

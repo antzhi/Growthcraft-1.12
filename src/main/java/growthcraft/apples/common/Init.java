@@ -79,7 +79,7 @@ public class Init {
 	////////
 	
     public static void preInitBlocks() {
-    	GrowthcraftApplesBlocks.blockApple = new BlockDefinition( new BlockApple("apple_crop") );
+    	GrowthcraftApplesBlocks.blockApple = new BlockTypeDefinition<BlockApple>( new BlockApple("apple_crop") );
     	GrowthcraftApplesBlocks.blockAppleDoor = new BlockDefinition( new BlockAppleDoor("apple_door") );
     	GrowthcraftApplesBlocks.blockAppleFence = new BlockDefinition( new BlockAppleFence("apple_fence") );
     	GrowthcraftApplesBlocks.blockAppleFenceGate = new BlockDefinition( new BlockAppleFenceGate("apple_fence_gate") );

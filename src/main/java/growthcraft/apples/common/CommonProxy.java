@@ -1,6 +1,6 @@
 package growthcraft.apples.common;
 
-import growthcraft.apples.common.compat.dynamictrees.DynamicTreesInit;
+import growthcraft.apples.common.compat.dynamictrees.DynamicTreesCompat;
 import growthcraft.core.shared.compat.Compat;
 
 public class CommonProxy {
@@ -12,7 +12,7 @@ public class CommonProxy {
     public void preInit() {
         registerTileEntities();
         if( Compat.isModAvailable_DynamicTrees() )
-        	DynamicTreesInit.onPreInit();
+        	DynamicTreesCompat.onPreInit();
     }
 
 	public void postInit() {

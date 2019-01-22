@@ -32,11 +32,15 @@ import java.util.Random;
 
 public class BlockApple extends BlockBush implements IGrowable {
 
+	public static int MIN_AGE = 0;
+	public static int MAX_AGE = 7;
+	
 	// TODO: Make fields configurable
 	public static final int CHANCE_GROWTH = 10;
 	public static final int CHANCE_TO_FALL = 0; // CHANCE_GROWTH * 6;	// NOTE: Must be approximately: "maximal production rate" * CHANCE_GROWTH  
+		
 	
-    public static final PropertyInteger AGE = PropertyInteger.create("age", 0, 7);
+    public static final PropertyInteger AGE = PropertyInteger.create("age", MIN_AGE, MAX_AGE);
 
     private static final AxisAlignedBB[] BOUNDING_BOXES = new AxisAlignedBB[]{
             new AxisAlignedBB(
@@ -82,6 +86,9 @@ public class BlockApple extends BlockBush implements IGrowable {
 
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+    	// SYNC: Keep in sync with MIN_AGE and MAX_AGE values
+    	// SYNC: Keep in sync with models.
+    	
         int iAge = this.getAge(state);
 
         if ( iAge <= 3 ) {
@@ -106,7 +113,7 @@ public class BlockApple extends BlockBush implements IGrowable {
 		}
         
         if( CHANCE_TO_FALL > 0 ) {
-	       	if( this.getAge(state) == 7 && rand.nextInt(CHANCE_TO_FALL) == 0 ) {
+	       	if( this.getAge(state) >= MAX_AGE && rand.nextInt(CHANCE_TO_FALL) == 0 ) {
 		        this.dropBlockAsItem(worldIn, pos, state, 0);
 		      	worldIn.setBlockToAir(pos);
 	        }
@@ -115,12 +122,12 @@ public class BlockApple extends BlockBush implements IGrowable {
 
     @Override
     public boolean canGrow(World worldIn, BlockPos pos, IBlockState state, boolean isClient) {
-        return this.getAge(state) != 7;
+        return this.getAge(state) < MAX_AGE;
     }
 
     @Override
     public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-        return this.getAge(state) < 7;
+        return this.getAge(state) < MAX_AGE;
     }
 
     @Override
@@ -129,7 +136,7 @@ public class BlockApple extends BlockBush implements IGrowable {
         // If we have enough light there is a 25% chance of growth to the next stage
         if ( worldIn.getLightFromNeighbors(pos.up()) >= 9 ) {
             // If the apple isn't full grown
-            if ( this.getAge(state) != 7) {
+            if ( this.getAge(state) < MAX_AGE) {
                 // Then increment the age.
                 worldIn.setBlockState(pos, state.cycleProperty(AGE), 4);
                 this.markBlockUpdate(worldIn, pos);
@@ -142,11 +149,13 @@ public class BlockApple extends BlockBush implements IGrowable {
         worldIn.notifyBlockUpdate(pos, worldIn.getBlockState(pos), worldIn.getBlockState(pos), 3);
         worldIn.scheduleBlockUpdate(pos, this, 0,0);
     }
-
+    
     @Override
     public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state) {
-        Block block = worldIn.getBlockState(pos.up()).getBlock();
-        return block instanceof BlockAppleLeaves;
+    	IBlockState blockState = worldIn.getBlockState(pos.up()); 
+//        Block block = worldIn.getBlockState(pos.up()).getBlock();
+//        return block instanceof BlockAppleLeaves;
+    	return BlockAppleLeaves.isAppleLeaves(blockState);
     }
     
 	@SuppressWarnings("deprecation")
@@ -155,7 +164,7 @@ public class BlockApple extends BlockBush implements IGrowable {
 	{
 		if (!this.canBlockStay(worldIn, pos, state))
 		{
-			worldIn.destroyBlock(pos, false);
+			worldIn.setBlockToAir(pos);
 		}
 	}
 
@@ -165,7 +174,7 @@ public class BlockApple extends BlockBush implements IGrowable {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if ( this.getAge(state) == 7) {
+        if ( this.getAge(state) >= MAX_AGE) {
             if ( !worldIn.isRemote) {
                 this.dropBlockAsItem(worldIn, pos, state, 0);
                 worldIn.setBlockToAir(pos);
@@ -177,7 +186,7 @@ public class BlockApple extends BlockBush implements IGrowable {
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        if ( this.getAge(state) == 7) {
+        if ( this.getAge(state) >= MAX_AGE) {
 	    	ItemStack appleStack = new ItemStack(Items.APPLE, 1);
 	        return appleStack.getItem();
         }

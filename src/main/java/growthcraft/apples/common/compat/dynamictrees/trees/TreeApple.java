@@ -2,15 +2,19 @@ package growthcraft.apples.common.compat.dynamictrees.trees;
 
 import java.util.ArrayList;
 
+import com.ferreusveritas.dynamictrees.ModBlocks;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
 import com.ferreusveritas.dynamictrees.blocks.LeavesPaging;
 import com.ferreusveritas.dynamictrees.blocks.LeavesProperties;
+import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 
 import growthcraft.apples.client.colors.ColorHandlers;
+import growthcraft.apples.common.block.BlockAppleLeaves;
+import growthcraft.apples.common.compat.dynamictrees.systems.featuregen.FeatureGenAppleFruit;
 import growthcraft.apples.shared.Reference;
 import growthcraft.apples.shared.init.GrowthcraftApplesBlocks;
 import growthcraft.apples.shared.init.GrowthcraftApplesItems;
@@ -45,13 +49,18 @@ public class TreeApple extends TreeFamily {
 
 			setBasicGrowingParameters(0.3f, 12.0f, upProbability, lowestBranchHeight, 1.0f);
 			
-			envFactor(Type.COLD, 0.50f);
+			envFactor(Type.COLD, 0.75f);
 			envFactor(Type.SNOWY, 0.25f);
-			envFactor(Type.HOT, 0.50f);
+			envFactor(Type.DRY, 0.25f);
+			envFactor(Type.HOT, 0.75f);
 			envFactor(Type.PLAINS, 1.05f);
 			envFactor(Type.FOREST, 0.8f);
 			
 			generateSeed();
+			
+			addGenFeature(new FeatureGenAppleFruit(GrowthcraftApplesBlocks.blockApple.getBlock())
+					.setRayDistance(BlockAppleLeaves.APPLE_DT_DISTANCE)
+					.setFruitingRadius(BlockAppleLeaves.APPLE_DT_FRUIT_RADIUS));
 			
 			setupStandardSeedDropping();
 		}
