@@ -3,6 +3,7 @@ package growthcraft.apples.common.compat.dynamictrees.trees;
 import java.util.ArrayList;
 
 import com.ferreusveritas.dynamictrees.ModBlocks;
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.client.ModelHelper;
 import com.ferreusveritas.dynamictrees.api.treedata.ILeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.BlockDynamicLeaves;
@@ -60,7 +61,7 @@ public class TreeApple extends TreeFamily {
 			
 			addGenFeature(new FeatureGenAppleFruit(GrowthcraftApplesBlocks.blockApple.getBlock())
 					.setRayDistance(BlockAppleLeaves.APPLE_DT_DISTANCE)
-					.setFruitingRadius(BlockAppleLeaves.APPLE_DT_FRUIT_RADIUS));
+					.setFruitingRadius(BlockAppleLeaves.APPLE_DT_REQUIRED_TRUNK_RADIUS));
 			
 			setupStandardSeedDropping();
 		}
@@ -96,10 +97,13 @@ public class TreeApple extends TreeFamily {
 	// Standard
 	//////////
 
-	public Item getSeeds() {
-		// TODO: Handle more species here if there are any
-		return getCommonSpecies().getSeed();
+	public ItemStack getSeedStack(int count) {
+		// TODO Auto-generated method stub
+
+		// TODO: Resolve item damage from species
+		return new ItemStack(getCommonSpecies().getSeed(), 1, 0);
 	}
+
 	
 	//////////
 	// Initialization (COMMON)
@@ -136,8 +140,11 @@ public class TreeApple extends TreeFamily {
 		leaves = LeavesPaging.getLeavesBlockForSequence(Reference.MODID, SEQUENCE_NUM, leavesProperties);
 		
 		registerSpecies(Species.REGISTRY);
+		
 		// TODO: Handle more species here, if there exist any
 		getCommonSpecies().setLeavesProperties(leavesProperties);
+		TreeRegistry.registerSaplingReplacer(GrowthcraftApplesBlocks.blockAppleSapling.getDefaultState(), getCommonSpecies());
+		
 	}
 	
 	public void onRegisterBlocks(IForgeRegistry<Block> registry) {
@@ -174,4 +181,5 @@ public class TreeApple extends TreeFamily {
 	public void onSetStateMappers() {
 		ModelLoader.setCustomStateMapper(leaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 	}
+
 }

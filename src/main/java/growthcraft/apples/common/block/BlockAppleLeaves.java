@@ -42,8 +42,11 @@ public class BlockAppleLeaves extends BlockLeaves implements IGrowable {
 	// TODO: Make fields configurable
 	public static final int APPLE_CHECK_AREA = 3;
 	public static final int MAX_APPLES_IN_AREA = 2;
-	public static final int APPLE_DT_DISTANCE = 4;	// Only used for dynamic trees.
-	public static final int APPLE_DT_FRUIT_RADIUS = 8;   // Only used for dynamic trees.
+	public static final int APPLE_SPAWN_CHANCE = 7;
+	
+	public static final int APPLE_DT_DISTANCE = 4;			// Only used for dynamic trees.
+	public static final int APPLE_DT_REQUIRED_TRUNK_RADIUS = 8;   // Only used for dynamic trees.
+	
 	
     public BlockAppleLeaves(String unlocalizedName) {
         this.setUnlocalizedName(unlocalizedName);
@@ -191,7 +194,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IGrowable {
     	if ( !worldIn.isRemote ) {
             // check the light level and pick a randomness for growth.
             if ( worldIn.getLightFromNeighbors(pos.up()) >= 9 ) {
-            	if( ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(7) == 0) ) {
+            	if( ForgeHooks.onCropsGrowPre(worldIn, pos, state, rand.nextInt(APPLE_SPAWN_CHANCE) == 0) ) {
             		if( canSpawnApple(worldIn, pos, state) ) {
 	    				grow(worldIn, rand, pos, state);
 	    				ForgeHooks.onCropsGrowPost(worldIn, pos, state, worldIn.getBlockState(pos));

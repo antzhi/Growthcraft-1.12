@@ -12,6 +12,7 @@ import growthcraft.apples.common.block.BlockAppleSapling;
 import growthcraft.apples.common.block.BlockAppleSlabDouble;
 import growthcraft.apples.common.block.BlockAppleSlabHalf;
 import growthcraft.apples.common.block.BlockAppleStairs;
+import growthcraft.apples.common.compat.dynamictrees.DynamicTreesCompat;
 import growthcraft.apples.common.item.ItemAppleDoor;
 import growthcraft.apples.common.item.ItemAppleLeaves;
 import growthcraft.apples.shared.Reference;
@@ -29,6 +30,7 @@ import growthcraft.cellar.shared.definition.BoozeDefinition;
 import growthcraft.cellar.shared.item.ItemBoozeBottle;
 import growthcraft.cellar.shared.processing.common.Residue;
 import growthcraft.core.shared.client.render.utils.ItemRenderUtils;
+import growthcraft.core.shared.compat.Compat;
 import growthcraft.core.shared.config.GrowthcraftCoreConfig;
 import growthcraft.core.shared.definition.BlockDefinition;
 import growthcraft.core.shared.definition.BlockTypeDefinition;
@@ -39,6 +41,7 @@ import growthcraft.core.shared.effect.EffectRandomList;
 import growthcraft.core.shared.effect.EffectWeightedRandomList;
 import growthcraft.core.shared.effect.SimplePotionEffectFactory;
 import growthcraft.core.shared.item.OreItemStacks;
+import growthcraft.core.shared.item.recipes.ShapelessMultiRecipe;
 import growthcraft.core.shared.utils.ColorUtils;
 import growthcraft.core.shared.utils.TickUtils;
 import net.minecraft.block.Block;
@@ -56,6 +59,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerFoliage;
@@ -392,10 +399,24 @@ public class Init {
 	////////
     
     public static void registerRecipes() {
-        registerCraftingRecipes();
+
     }
 
-    private static void registerCraftingRecipes() {
+    public static void registerCraftingRecipes(IForgeRegistry<IRecipe> registry) {
+    	ResourceLocation group = new ResourceLocation(Reference.MODID, "apples");
+    	
+    	ItemStack saplingStack = GrowthcraftApplesBlocks.blockAppleSapling.asStack(1);
+    	if( Compat.isModAvailable_DynamicTrees() ) {
+    		saplingStack = DynamicTreesCompat.getAppleSeedStack(1);
+    	}
+    	
+    	registry.register(new ShapelessRecipes(group.toString(),
+    			saplingStack,
+    			NonNullList.from( Ingredient.fromItem(Items.APPLE),
+    					Ingredient.fromItem(Items.APPLE)))
+    				.setRegistryName(toRegName("apple_to_sapling")));
+    			
+    	
     	// TODO: RECIPE_REGISTER!
 /*
         GameRegistry.addRecipe(
@@ -453,6 +474,10 @@ public class Init {
                 new ItemStack(Items.WOODEN_SWORD, 1) );
 */
     }
+    
+	private static ResourceLocation toRegName(String name) {
+		return new ResourceLocation(Reference.MODID, name);
+	}
 
 
 }

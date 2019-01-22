@@ -5,15 +5,25 @@ import growthcraft.apples.common.compat.dynamictrees.trees.TreeApple;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+/**
+ * A facade between GC and DT. Don't call any methods if
+ * {@link growthcraft.core.shared.compat.Compat#isModAvailable_DynamicTrees()} is <code>false</code>.
+ *
+ */
 public class DynamicTreesCompat {
 	private DynamicTreesCompat() {}
 
 	public static boolean isAppleLeaves(IBlockState state) {
 		return ModTrees.appleTree.getCommonLeaves().getDynamicLeavesState().getBlock() == state.getBlock();
+	}
+	
+	public static ItemStack getAppleSeedStack(int count) {
+		return ModTrees.appleTree.getSeedStack(count);
 	}
 	
 	/////////////
