@@ -18,3 +18,9 @@ fluid.fluid_booze_apple_cider_extended=Apple Cider
 fluid.fluid_booze_apple_cider_ethereal=Silken Nectar
 fluid.fluid_booze_apple_cider_intoxicated=Apple Cider
 fluid.fluid_booze_apple_cider_poisoned=Apple Cider
+
+# DynamicTrees seeds
+item.growthcraft_apples:appleseed.name=Apple Seeds
+
+# DynamicTrees branches
+tile.growthcraft_apples:applebranch.name=Apple Wood
