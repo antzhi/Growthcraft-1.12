@@ -17,6 +17,7 @@ public class GrowthcraftApplesItems {
 
     public static ItemTypeDefinition<ItemBoozeBottle> appleCider;
 	public static ItemTypeDefinition<ItemBlock> itemAppleLeaves;
+	public static ItemTypeDefinition<ItemBlock> itemAppleLog;
     
 	public enum AppleCiderTypes implements IObjectBooze, IStringSerializable, IItemStackFactory, IObjectVariant {
     	APPLE_JUICE(0, "apple_juice"),

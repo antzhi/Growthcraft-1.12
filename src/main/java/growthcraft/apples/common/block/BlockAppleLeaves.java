@@ -43,7 +43,7 @@ public class BlockAppleLeaves extends BlockLeaves implements IGrowable {
 	public static final int APPLE_CHECK_AREA = 3;
 	public static final int MAX_APPLES_IN_AREA = 2;
 	public static final int APPLE_DT_DISTANCE = 4;	// Only used for dynamic trees.
-	public static final int APPLE_DT_FRUIT_RADIUS = 4;   // Only used for dynamic trees.
+	public static final int APPLE_DT_FRUIT_RADIUS = 8;   // Only used for dynamic trees.
 	
     public BlockAppleLeaves(String unlocalizedName) {
         this.setUnlocalizedName(unlocalizedName);

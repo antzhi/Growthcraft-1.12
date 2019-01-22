@@ -124,7 +124,8 @@ public class Init {
     	GrowthcraftApplesBlocks.blockAppleFenceGate.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleLeaves.registerBlockItem(registry,
     			GrowthcraftApplesItems.itemAppleLeaves.getItem());
-    	GrowthcraftApplesBlocks.blockAppleLog.registerBlockItem(registry);
+    	GrowthcraftApplesBlocks.blockAppleLog.registerBlockItem(registry,
+    			GrowthcraftApplesItems.itemAppleLog.getItem());
     	GrowthcraftApplesBlocks.blockApplePlanks.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleSapling.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleSlabHalf.registerBlockItem(registry,
@@ -173,7 +174,8 @@ public class Init {
 	
     public static void preInitItems() {
     	GrowthcraftApplesItems.itemAppleDoor = new ItemDefinition( new ItemAppleDoor("apple_door_item", GrowthcraftApplesBlocks.blockAppleDoor.getBlock()) );
-    	GrowthcraftApplesItems.itemAppleLeaves = new ItemTypeDefinition<ItemBlock>( new ItemAppleLeaves(GrowthcraftApplesBlocks.blockAppleLeaves.getBlock())); 
+    	GrowthcraftApplesItems.itemAppleLeaves = new ItemTypeDefinition<ItemBlock>( new ItemAppleLeaves(GrowthcraftApplesBlocks.blockAppleLeaves.getBlock()));
+    	GrowthcraftApplesItems.itemAppleLog = new ItemTypeDefinition<ItemBlock>( new ItemBlock(GrowthcraftApplesBlocks.blockAppleLog.getBlock()));
     	GrowthcraftApplesItems.appleCider = new ItemTypeDefinition<ItemBoozeBottle>( new ItemBoozeBottle() );
     }
     

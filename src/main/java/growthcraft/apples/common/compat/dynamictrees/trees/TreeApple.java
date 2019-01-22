@@ -75,8 +75,9 @@ public class TreeApple extends TreeFamily {
 		super(new ResourceLocation(Reference.MODID, name));
 		
 		IBlockState log = getLogStateForModel();
-		int meta = log.getBlock().getMetaFromState(log);
-		setPrimitiveLog(log, new ItemStack(log.getBlock(), 1, meta));
+		// TODO: Resolve item damage from meta
+//		int meta = log.getBlock().getMetaFromState(log);
+		setPrimitiveLog(log, new ItemStack(getLogItem(), 1, 0));
 		
 		addConnectableVanillaLeaves((state) -> state.getBlock() == GrowthcraftApplesBlocks.blockAppleLeaves.getBlock());
 	}
@@ -114,6 +115,10 @@ public class TreeApple extends TreeFamily {
 	
 	private Item getLeavesItem() {
 		return GrowthcraftApplesItems.itemAppleLeaves.getItem();
+	}
+	
+	private Item getLogItem() {
+		return GrowthcraftApplesItems.itemAppleLog.getItem();
 	}
 	
 	public void onPreInit() {
