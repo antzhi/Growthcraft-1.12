@@ -1,5 +1,6 @@
 package growthcraft.apples.common;
 
+import growthcraft.apples.client.colors.ColorHandlers;
 import growthcraft.apples.common.block.BlockApple;
 import growthcraft.apples.common.block.BlockAppleDoor;
 import growthcraft.apples.common.block.BlockAppleFence;
@@ -122,7 +123,7 @@ public class Init {
     	GrowthcraftApplesBlocks.blockAppleFence.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleFenceGate.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleLeaves.registerBlockItem(registry,
-    			new ItemAppleLeaves(GrowthcraftApplesBlocks.blockAppleLeaves.getBlock()));
+    			GrowthcraftApplesItems.itemAppleLeaves.getItem());
     	GrowthcraftApplesBlocks.blockAppleLog.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockApplePlanks.registerBlockItem(registry);
     	GrowthcraftApplesBlocks.blockAppleSapling.registerBlockItem(registry);
@@ -152,22 +153,7 @@ public class Init {
     public static void registerBlockColorHandlers() {
         BlockColors blockColors = Minecraft.getMinecraft().getBlockColors();
     	blockColors.registerBlockColorHandler(
-        		(state, worldIn, pos, tintindex) -> {
-        			float[] color = ColorUtils.getFloat4ARGB(BlockAppleLeaves.LEAVES_COLOR);
-        			if( worldIn != null && pos != null ) {
-        				float[] baseColor = ColorUtils.getFloat4ARGB(ColorizerFoliage.getFoliageColorBasic());
-        				float[] curColor = ColorUtils.getFloat4ARGB(BiomeColorHelper.getFoliageColorAtPos(worldIn, pos));
-        				
-        				float[] colorRatio = new float[3];
-        				for( int i = 1; i < 3; i ++ )
-        					colorRatio[i - 1] = curColor[i] / baseColor[i]; // (curColor[i] - baseColor[i]) / baseColor[i] + 1.0f;
-        				
-        				for( int i = 1; i < 3; i ++ )
-        					color[i] *= colorRatio[i - 1];
-        			}
-        			
-        			return ColorUtils.getIntARGB(color);
-        		},
+        		ColorHandlers.createAppleLeavesBC(),
         		GrowthcraftApplesBlocks.blockAppleLeaves.getBlock());
     }
 
@@ -187,6 +173,7 @@ public class Init {
 	
     public static void preInitItems() {
     	GrowthcraftApplesItems.itemAppleDoor = new ItemDefinition( new ItemAppleDoor("apple_door_item", GrowthcraftApplesBlocks.blockAppleDoor.getBlock()) );
+    	GrowthcraftApplesItems.itemAppleLeaves = new ItemTypeDefinition<ItemBlock>( new ItemAppleLeaves(GrowthcraftApplesBlocks.blockAppleLeaves.getBlock())); 
     	GrowthcraftApplesItems.appleCider = new ItemTypeDefinition<ItemBoozeBottle>( new ItemBoozeBottle() );
     }
     

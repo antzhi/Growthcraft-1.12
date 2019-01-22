@@ -2,6 +2,7 @@ package growthcraft.apples;
 
 import growthcraft.apples.common.CommonProxy;
 import growthcraft.apples.common.Init;
+import growthcraft.apples.common.compat.dynamictrees.DynamicTreesInit;
 import growthcraft.apples.common.compat.rustic.RusticApplesRecipes;
 import growthcraft.apples.shared.Reference;
 import growthcraft.core.shared.compat.Compat;
@@ -50,6 +51,9 @@ public class GrowthcraftApples {
         if (Compat.isModAvailable_Rustic())
         	RusticApplesRecipes.initBoozes();
         Init.registerRecipes();
+        
+        if (Compat.isModAvailable_DynamicTrees())
+        	DynamicTreesInit.onInit();
     }
 
     @Mod.EventHandler
@@ -73,6 +77,9 @@ public class GrowthcraftApples {
         Init.registerBlocks(registry);
         Init.registerFluidBlocks(registry);
         
+        if( Compat.isModAvailable_DynamicTrees() )
+        	DynamicTreesInit.onRegisterBlocks(registry);
+        
         proxy.registerStateMappers();
 	}
 
@@ -84,6 +91,9 @@ public class GrowthcraftApples {
         Init.registerItems(registry);
         Init.registerBlockItems(registry);
         
+        if( Compat.isModAvailable_DynamicTrees() )
+        	DynamicTreesInit.onRegisterBlockItems(registry);
+        
         proxy.postRegisterItems();
 	}
     
@@ -94,7 +104,9 @@ public class GrowthcraftApples {
         Init.registerItemRenders();
         Init.registerBlockRenders();
         Init.registerFluidRenders();
+        
+        if( Compat.isModAvailable_DynamicTrees() )
+        	DynamicTreesInit.onRegisterModels();
 	}
-	
 	
 }

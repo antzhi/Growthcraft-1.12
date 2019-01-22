@@ -1,6 +1,5 @@
 package growthcraft.core.shared.compat;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +19,7 @@ public class Compat {
 	public static final String MODID_FORESTRY = "forestry";
 	public static final String MODID_RUSTIC = "rustic";
 	public static final String MODID_THAUMCRAFT = "thaumcraft";
+	public static final String MODID_DYNAMICTREES = "dynamictrees";
 	
 	
 	////////////
@@ -36,6 +36,10 @@ public class Compat {
     
     public static boolean isModAvailable_Thaumcraft() {
     	return Loader.isModLoaded(MODID_THAUMCRAFT);
+    }
+    
+    public static boolean isModAvailable_DynamicTrees() {
+    	return Loader.isModLoaded(MODID_DYNAMICTREES);
     }
     
     ////////////

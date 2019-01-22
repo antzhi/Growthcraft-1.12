@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/smartmodel/branch",
+    "textures": {
+        "bark": "growthcraft_apples:blocks/apple_log",
+        "rings": "growthcraft_apples:blocks/apple_log_top"
+    }
+}

@@ -8,6 +8,7 @@ import growthcraft.core.shared.definition.IItemStackFactory;
 import growthcraft.core.shared.definition.IObjectVariant;
 import growthcraft.core.shared.definition.ItemDefinition;
 import growthcraft.core.shared.definition.ItemTypeDefinition;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 
@@ -15,6 +16,7 @@ public class GrowthcraftApplesItems {
     public static ItemDefinition itemAppleDoor;
 
     public static ItemTypeDefinition<ItemBoozeBottle> appleCider;
+	public static ItemTypeDefinition<ItemBlock> itemAppleLeaves;
     
 	public enum AppleCiderTypes implements IObjectBooze, IStringSerializable, IItemStackFactory, IObjectVariant {
     	APPLE_JUICE(0, "apple_juice"),
