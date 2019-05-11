@@ -1,24 +1,24 @@
 { 
 	"display": { 
 		"icon": { 
-			"item": "minecraft:apple"
+			"item": "growthcraft:salt"
 		},
 		"title": { 
-			"translate": "advancement.get.apple"
+			"translate": "advancement.get.salt"
 		},
 		"description": {
-			"translate": "advancement.get.apple.desc",
+			"translate": "advancement.get.salt.desc",
 			"italic": true
 		},
-		"background": "growthcraft_apples:textures/blocks/apple_planks.png"
+		"background": "growthcraft:textures/blocks/salt_ore.png"
 	},
 	"criteria": {
-		"get_apple": {
+		"get_salt": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions":{
 				"items":[
 					{
-						"item": "minecraft:apple"
+						"item": "growthcraft:salt"
 					}
 				]
 			}
