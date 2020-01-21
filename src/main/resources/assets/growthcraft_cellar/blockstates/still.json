@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+	"model": "growthcraft_cellar:still"
+  },
+  "variants": {
+    "normal": [{ }],
+    "inventory": [{
+       "y": 0
+    }]
+  }
+}
