@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-public class BlockStill extends BlockCellarContainer {
+public class BlockStill extends BlockRotatableCellarContainer {
     public BlockStill(String unlocalizedName) {
         super(Material.IRON);
         //setTileEntityType(TileEntityBrewKettle.class);

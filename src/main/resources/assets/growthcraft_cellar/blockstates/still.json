@@ -5,6 +5,12 @@
   },
   "variants": {
     "normal": [{ }],
+    "rotation":{
+      "south":{"transform":{"rotation": {"y":0}}},
+      "north":{"transform":{"rotation": {"y":180}}},
+      "east":{"transform":{"rotation":  {"y":90}}},
+      "west":{"transform":{"rotation":  {"y":270}}}
+    },
     "inventory": [{
        "y": 0
     }]
