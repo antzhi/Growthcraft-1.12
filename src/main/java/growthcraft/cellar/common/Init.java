@@ -139,6 +139,7 @@ public class Init {
         GameRegistry.registerTileEntity(TileEntityCultureJar.class, Reference.MODID + ":culture_jar");
         GameRegistry.registerTileEntity(TileEntityFruitPress.class, Reference.MODID + ":fruit_press");
         GameRegistry.registerTileEntity(TileEntityFruitPresser.class, Reference.MODID + ":fruit_presser");
+        GameRegistry.registerTileEntity(TileEntityStill.class, new ResourceLocation(Reference.MODID+"still"));
     }
 
     @SideOnly(Side.CLIENT)
