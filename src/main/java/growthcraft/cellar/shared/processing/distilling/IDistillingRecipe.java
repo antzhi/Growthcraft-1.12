@@ -1,8 +1,6 @@
 package growthcraft.cellar.shared.processing.distilling;
 
 import growthcraft.cellar.shared.processing.common.IProcessingRecipeBase;
-import growthcraft.core.shared.definition.IMultiFluidStacks;
-import growthcraft.core.shared.definition.IMultiItemStacks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -10,9 +8,9 @@ import javax.annotation.Nullable;
 
 public interface IDistillingRecipe extends IProcessingRecipeBase {
 
-    IMultiFluidStacks getInputFluidStack();
+    FluidStack getInputFluidStack();
 
-    IMultiItemStacks getInputItemStack();
+    ItemStack getInputItemStack();
 
     FluidStack getOutputFluidStack();
 

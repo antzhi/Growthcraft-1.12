@@ -5,6 +5,7 @@ import growthcraft.cellar.shared.booze.BoozeEntry;
 import growthcraft.cellar.shared.booze.BoozeRegistry;
 import growthcraft.cellar.shared.processing.brewing.BrewingRegistry;
 import growthcraft.cellar.shared.processing.culturing.CulturingRegistry;
+import growthcraft.cellar.shared.processing.distilling.DistillingRegistry;
 import growthcraft.cellar.shared.processing.fermenting.FermentingRegistry;
 import growthcraft.cellar.shared.processing.heatsource.HeatSourceRegistry;
 import growthcraft.cellar.shared.processing.pressing.PressingRegistry;
@@ -23,6 +24,7 @@ public class CellarRegistry {
     private final HeatSourceRegistry heatSourceRegistry = new HeatSourceRegistry();
     private final PressingRegistry pressingRegistry = new PressingRegistry();
     private final YeastRegistry yeastRegistry = new YeastRegistry();
+    private final DistillingRegistry stillRegistry = new DistillingRegistry();
 
     /**
      * @return current instrance of the CellarRegistry
@@ -84,6 +86,13 @@ public class CellarRegistry {
      */
     public YeastRegistry yeast() {
         return yeastRegistry;
+    }
+
+    /**
+     * @return instance of the DistillingRegistry
+     */
+    public DistillingRegistry distilling() {
+        return stillRegistry;
     }
 
     public static void onPostInit() {

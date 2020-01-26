@@ -1,7 +1,9 @@
 package growthcraft.cellar.common.tileentity.device;
 
 import growthcraft.cellar.common.tileentity.TileEntityCellarDevice;
+import growthcraft.cellar.shared.CellarRegistry;
 import growthcraft.cellar.shared.processing.distilling.IDistillingRecipe;
+import growthcraft.core.shared.fluids.GrowthcraftFluidUtils;
 import growthcraft.core.shared.tileentity.component.TileHeatingComponent;
 import growthcraft.core.shared.tileentity.device.DeviceFluidSlot;
 import growthcraft.core.shared.tileentity.device.DeviceInventorySlot;
@@ -33,18 +35,34 @@ public class Still extends DeviceProgressive<IDistillingRecipe> {
 
     @Override
     protected IDistillingRecipe loadRecipe() {
-        //return CellarRegistry.instance().brewing().findRecipe(GrowthcraftFluidUtils.removeStackTags(inputFluidSlot.get()), brewingSlot.get(), hasLid);
-        return null;
+        return CellarRegistry.instance().distilling().findRecipe(GrowthcraftFluidUtils.removeStackTags(inputFluidSlot.get()), inputInvSlot.get());
     }
 
     @Override
     public boolean canProcess() {
-        return false;
+        IDistillingRecipe recipe = getWorkingRecipe();
+        if(recipe == null) return false;
+        //Checks for input fluids
+        if(inputFluidSlot.get() == null){
+            return false;
+        }
+        if(!inputFluidSlot.hasEnough(recipe.getInputFluidStack())) return false;
+        //Checks for input items
+        if(!inputInvSlot.hasEnough(recipe.getInputItemStack())) return false;
+        //Checks for output fluids
+        if(!outputFluidSlot.hasCapacityFor(recipe.getOutputFluidStack())) return false;
+        //Checks for output items
+        if(!outputInvSlot.hasCapacityFor(recipe.getOutputItemStack())) return false;
+
+        return true;
     }
 
     @Override
     protected void process(IDistillingRecipe recipe) {
-
+        inputFluidSlot.consume(GrowthcraftFluidUtils.replaceFluidStackTags(recipe.getInputFluidStack(), inputFluidSlot.get()), true);
+        outputFluidSlot.fill(recipe.getOutputFluidStack(), true);
+        //TODO:consume item
+        markForUpdate(true);
     }
     @Override
     public void update() {

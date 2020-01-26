@@ -32,6 +32,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -245,7 +247,14 @@ public class Init {
     // Recipes
     ///////////
 
+    //TODO:implement something similar to booze factory
+    public static void registerDistillation(){
+        CellarRegistry.instance().distilling().addRecipe(new FluidStack(FluidRegistry.WATER,100),
+                null,new FluidStack(FluidRegistry.LAVA,10),
+                null,0,200);
+    }
     public static void registerRecipes() {
+        registerDistillation();
         registerCraftingRecipes();
     }
 

@@ -33,11 +33,11 @@ public class GuiStill extends GuiCellar<ContainerStill, TileEntityStill>{
     public void initGui() {
         super.initGui();
         widgets.add(new WidgetHeatIcon(widgets, 67, 53, 14, 14).setTextureRect(176, 28, 14, 14));
-        widgets.add(new WidgetFluidTank(widgets, 0, 46, 17, 16, 52));
-        widgets.add(new WidgetFluidTank(widgets, 1, 114, 17, 16, 52));
-        widgets.add(new WidgetDeviceProgressIcon(widgets, 98, 30, 9, 28)
-                .setProgressDirection(WidgetDeviceProgressIcon.ProgressDirection.TOP_TO_BOTTOM)
-                .setTextureRect(176, 0, 9, 28));
+        widgets.add(new WidgetFluidTank(widgets, 0, 26, 15, 16, 58));
+        widgets.add(new WidgetFluidTank(widgets, 1, 134, 15, 16, 58));
+        widgets.add(new WidgetDeviceProgressIcon(widgets, 78, 35, 22, 15)
+                .setProgressDirection(WidgetDeviceProgressIcon.ProgressDirection.LEFT_TO_RIGHT)
+                .setTextureRect(176, 0, 22, 15));
 
         if (GrowthcraftCellarConfig.enableDiscardButton) {
             this.button0 = new GuiButtonDiscard(guiResource, 1, guiLeft + 52, guiTop + 54);
