@@ -32,7 +32,7 @@ public class GuiStill extends GuiCellar<ContainerStill, TileEntityStill>{
     @Override
     public void initGui() {
         super.initGui();
-        widgets.add(new WidgetHeatIcon(widgets, 67, 53, 14, 14).setTextureRect(176, 28, 14, 14));
+        widgets.add(new WidgetHeatIcon(widgets, 81, 56, 14, 14).setTextureRect(176, 17, 14, 14));
         widgets.add(new WidgetFluidTank(widgets, 0, 26, 15, 16, 58));
         widgets.add(new WidgetFluidTank(widgets, 1, 134, 15, 16, 58));
         widgets.add(new WidgetDeviceProgressIcon(widgets, 78, 35, 22, 15)

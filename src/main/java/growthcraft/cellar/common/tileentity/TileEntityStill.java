@@ -14,6 +14,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 
@@ -39,26 +40,30 @@ public class TileEntityStill extends TileEntityCellarDevice implements ITickable
             return UNKNOWN;
         }
     }
+
+    //heat stuff
+
+    @Override
+    public boolean isHeated() {
+        return still.isHeated();
+    }
+
+    @Override
+    public float getHeatMultiplier() {
+        return still.getHeatMultiplier();
+    }
+
+    @Override
+    public int getHeatScaled(int scale) {
+        return (int) (MathHelper.clamp(still.getHeatMultiplier(), 0.0f, 1.0f) * scale);
+    }
+
     //Processing stuff
     @Override
     public DeviceBase[] getDevices() {
         return new DeviceBase[]{still};
     }
 
-    @Override
-    public boolean isHeated() {
-        return false;
-    }
-
-    @Override
-    public float getHeatMultiplier() {
-        return 0;
-    }
-
-    @Override
-    public int getHeatScaled(int scale) {
-        return 0;
-    }
 
     @Override
     public float getDeviceProgress() {
@@ -134,7 +139,7 @@ public class TileEntityStill extends TileEntityCellarDevice implements ITickable
         super.sendGUINetworkData(container, iCrafting);
         iCrafting.sendWindowProperty(container, TileEntityStill.StillDataID.TIME.ordinal(), (int) still.getTime());
         iCrafting.sendWindowProperty(container, TileEntityStill.StillDataID.TIME_MAX.ordinal(), (int) still.getTimeMax());
-        //iCrafting.sendWindowProperty(container, TileEntityStill.StillDataID.HEAT_AMOUNT.ordinal(), (int) (still.getHeatMultiplier() * 0x7FFF));
+        iCrafting.sendWindowProperty(container, TileEntityStill.StillDataID.HEAT_AMOUNT.ordinal(), (int) (still.getHeatMultiplier() * 0x7FFF));
     }
 
     //Fluid stuff

@@ -28,11 +28,21 @@ public class Still extends DeviceProgressive<IDistillingRecipe> {
         this.heatComponent = new TileHeatingComponent(te, 0.5f);
     }
 
+    //heat stuff
     public Still setHeatMultiplier(float h) {
         heatComponent.setHeatMultiplier(h);
         return this;
     }
 
+    public float getHeatMultiplier() {
+        return heatComponent.getHeatMultiplier();
+    }
+
+    public boolean isHeated() {
+        return getHeatMultiplier() > 0;
+    }
+
+    //processing stuff
     @Override
     protected IDistillingRecipe loadRecipe() {
         return CellarRegistry.instance().distilling().findRecipe(GrowthcraftFluidUtils.removeStackTags(inputFluidSlot.get()), inputInvSlot.get());
