@@ -1,0 +1,15 @@
+{"forge_marker": 1,
+  "defaults": {
+    "model": "growthcraft_distillery:bagasse_bale"
+  },
+  "variants": {
+    "normal":{"model": "growthcraft_distillery:bagasse_bale"},
+    "axis=y":  { "model": "growthcraft_distillery:bagasse_bale" },
+    "axis=z":   { "model": "growthcraft_distillery:bagasse_bale", "x": 90 },
+    "axis=x":   { "model": "growthcraft_distillery:bagasse_bale", "x": 90, "y": 90 },
+    "axis=none": { "model": "growthcraft_distillery:bagasse_bale" },
+    "inventory": [{
+      "transform": "forge:default-block"
+    }]
+  }
+}
