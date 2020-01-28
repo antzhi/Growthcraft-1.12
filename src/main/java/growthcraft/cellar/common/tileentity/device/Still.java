@@ -49,6 +49,11 @@ public class Still extends DeviceProgressive<IDistillingRecipe> {
     }
 
     @Override
+    protected float getSpeedMultiplier(){
+        return super.getSpeedMultiplier()*getHeatMultiplier();
+    }
+
+    @Override
     public boolean canProcess() {
         IDistillingRecipe recipe = getWorkingRecipe();
         if(recipe == null) return false;

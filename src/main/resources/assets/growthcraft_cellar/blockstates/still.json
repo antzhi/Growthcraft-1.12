@@ -6,6 +6,8 @@
   "variants": {
     "normal": [{ }],
     "rotation":{
+      "up":  { "transform":{"rotation":{ "x": 180}}},
+      "down":  { "transform":{"rotation":{ "x": 0}}},
       "south":{"transform":{"rotation": {"y":0}}},
       "north":{"transform":{"rotation": {"y":180}}},
       "east":{"transform":{"rotation":  {"y":90}}},
