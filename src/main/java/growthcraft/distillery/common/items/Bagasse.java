@@ -1,4 +1,4 @@
-package growthcraft.distillery.common.Items;
+package growthcraft.distillery.common.items;
 
 import growthcraft.distillery.shared.Reference;
 import net.minecraft.item.Item;

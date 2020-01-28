@@ -3,7 +3,6 @@ package growthcraft.cellar.common.tileentity;
 import growthcraft.cellar.common.inventory.ContainerStill;
 import growthcraft.cellar.common.tileentity.device.Still;
 import growthcraft.cellar.common.tileentity.fluids.CellarTank;
-import growthcraft.cellar.shared.config.GrowthcraftCellarConfig;
 import growthcraft.core.shared.inventory.GrowthcraftInternalInventory;
 import growthcraft.core.shared.tileentity.device.DeviceBase;
 import growthcraft.core.shared.tileentity.feature.ITileHeatedDevice;
@@ -22,13 +21,13 @@ public class TileEntityStill extends TileEntityCellarDevice implements ITickable
 
     private Still still = new Still(this,0,1,0,1);
 
-    public static enum StillDataID {
+    public enum StillDataID {
         TIME,
         TIME_MAX,
         HEAT_AMOUNT,
         UNKNOWN;
 
-        public static final TileEntityStill.StillDataID[] VALUES = new TileEntityStill.StillDataID[]
+        protected static final TileEntityStill.StillDataID[] VALUES = new TileEntityStill.StillDataID[]
                 {
                         TIME,
                         TIME_MAX,

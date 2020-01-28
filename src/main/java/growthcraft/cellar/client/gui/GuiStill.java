@@ -20,10 +20,9 @@ import java.util.List;
 public class GuiStill extends GuiCellar<ContainerStill, TileEntityStill>{
 
     public static final ResourceLocation GUI_TEXTURE = new ResourceLocation(Reference.MODID, "textures/guis/gui_still.png");
-    //TODO:Implements buttons
+
     private GuiButtonDiscard button0;
     private GuiButtonDiscard button1;
-    //private GuiButtonSwitch button2;
 
     public GuiStill(InventoryPlayer inv, TileEntityStill still) {
         super(GUI_TEXTURE, new ContainerStill(inv, still), still);
@@ -47,18 +46,14 @@ public class GuiStill extends GuiCellar<ContainerStill, TileEntityStill>{
             button1.enabled = false;
         }
 
-        //this.button2 = new GuiButtonSwitch(guiResource, 1, this.guiLeft + 133, this.guiTop + 37);
-        //this.button2.enabled = false;
 
         if (button0 != null) this.buttonList.add(this.button0);
         if (button1 != null) this.buttonList.add(this.button1);
-        //buttonList.add(this.button2);
 
         addTooltipIndex("fluidtank.input", 25, 14, 16, 52);
         addTooltipIndex("fluidtank.output", 133, 14, 16, 52);
         if (button0 != null) addTooltipIndex("discard.fluidtank.input", 52, 54, 16, 16);
         if (button1 != null) addTooltipIndex("discard.fluidtank.output", 106, 54, 16, 16);
-        //addTooltipIndex("switch.fluidtanks", 133, 37, 16, 16);
     }
 
     @Override

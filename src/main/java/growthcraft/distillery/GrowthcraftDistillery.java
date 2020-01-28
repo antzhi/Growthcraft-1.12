@@ -36,12 +36,13 @@ public class GrowthcraftDistillery {
     public static void preInit(FMLPreInitializationEvent event) {
         Init.preInitItems();
         Init.preInitBlocks();
-        //Init.preInitFluids();
+        Init.preInitFluids();
         proxy.preInit();
     }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
         proxy.init();
+        Init.initBoozes();
     }
 
     @Mod.EventHandler
@@ -69,7 +70,7 @@ public class GrowthcraftDistillery {
 
         Init.registerItems(registry);
         Init.registerBlockItems(registry);
-       // Init.registerFluidItems(registry);
+        //Init.registerFluidItems(registry);
 
         proxy.postRegisterItems();
     }
