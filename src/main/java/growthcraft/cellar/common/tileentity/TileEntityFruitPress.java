@@ -9,6 +9,7 @@ import growthcraft.core.shared.inventory.GrowthcraftInternalInventory;
 import growthcraft.core.shared.tileentity.device.DeviceBase;
 import growthcraft.core.shared.tileentity.event.TileEventHandler;
 import growthcraft.core.shared.tileentity.feature.ITileProgressiveDevice;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -90,6 +91,8 @@ public class TileEntityFruitPress extends TileEntityCellarDevice implements ITic
     }
 
     public boolean isPressed(){
+        IBlockState  block = getWorld().getBlockState(this.getPos().up());
+        if(!(block.getProperties().containsKey(BlockFruitPresser.TYPE_PRESSED) || !(block.getBlock() instanceof BlockFruitPresser))){return false;}
         return getWorld().getBlockState(this.getPos().up()).getValue(BlockFruitPresser.TYPE_PRESSED) == BlockFruitPresser.PressState.PRESSED;
     }
     @Override
