@@ -9,4 +9,6 @@ public class GrowthcraftDistilleryFluids {
     public static BoozeDefinition[] sugarCaneBooze;
     public static BoozeDefinition[] cactusBooze;
     public static BoozeDefinition[] fruitBooze;
+
+    public static BoozeDefinition[] spiritBooze;
 }

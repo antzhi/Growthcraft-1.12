@@ -1,0 +1,16 @@
+#blocks
+tile.blockbagasse.name=Bagasse Bale
+
+#items
+item.bagasse.name=Bagasse
+
+#Boozes
+fluid.fluid_booze_cane_juice=Sugar Cane Juice
+fluid.fluid_booze_cane_wine_fermented=Sugar Cane Wine
+
+fluid.fluid_booze_fruit_juice=Fruit Juice
+fluid.fluid_booze_fruit_wine_fermented=Fruit Wine
+
+
+fluid.fluid_booze_cactus_juice=Cactus Juice
+fluid.fluid_booze_cactus_wine_fermented=Cactus Wine

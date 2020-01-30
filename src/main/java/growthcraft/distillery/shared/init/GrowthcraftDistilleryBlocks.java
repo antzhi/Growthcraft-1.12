@@ -12,4 +12,6 @@ public class GrowthcraftDistilleryBlocks {
     public static BlockBoozeDefinition[] caneWineFluidBlocks;
     public static BlockBoozeDefinition[] fruitWineFluidBlocks;
     public static BlockBoozeDefinition[] cactusWineFluidBlocks;
+
+    public static BlockBoozeDefinition[] spiritFluidBlocks;
 }

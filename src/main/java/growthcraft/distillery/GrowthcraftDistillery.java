@@ -47,7 +47,7 @@ public class GrowthcraftDistillery {
 
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event) {
-        //Init.registerItemOres();
+        Init.registerItemOres();
         //Init.registerFluidOres();
     }
 
