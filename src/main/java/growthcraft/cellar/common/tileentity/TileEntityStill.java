@@ -3,6 +3,7 @@ package growthcraft.cellar.common.tileentity;
 import growthcraft.cellar.common.inventory.ContainerStill;
 import growthcraft.cellar.common.tileentity.device.Still;
 import growthcraft.cellar.common.tileentity.fluids.CellarTank;
+import growthcraft.cellar.shared.config.GrowthcraftCellarConfig;
 import growthcraft.core.shared.inventory.GrowthcraftInternalInventory;
 import growthcraft.core.shared.tileentity.device.DeviceBase;
 import growthcraft.core.shared.tileentity.feature.ITileHeatedDevice;
@@ -84,8 +85,7 @@ public class TileEntityStill extends TileEntityCellarDevice implements ITickable
     //Inventory stuff
     @Override
     protected FluidTank[] createTanks() {
-        //TODO: add config for this
-        final int maxCap = 1000;
+        final int maxCap = GrowthcraftCellarConfig.stillMaxCap;
         return new FluidTank[]{new CellarTank(maxCap, this), new CellarTank(maxCap, this)};
     }
 

@@ -1,6 +1,5 @@
 package growthcraft.distillery.common;
 
-import growthcraft.bees.common.Init;
 
 public class CommonProxy {
 

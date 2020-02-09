@@ -29,6 +29,7 @@ public class GrowthcraftCellarConfig {
     public static int cultureJarConsumption = 1000 / 4;
     public static int cultureJarMaxCap = 1000;
     public static int fruitPressMaxCap = 1000;
+    public static int stillMaxCap = 10000;
 
     // Configurable settings.
     public static boolean allowFallbackRecipes = true;

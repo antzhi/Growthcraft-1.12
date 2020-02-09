@@ -7,10 +7,13 @@ item.bagasse.name=Bagasse
 #Boozes
 fluid.fluid_booze_cane_juice=Sugar Cane Juice
 fluid.fluid_booze_cane_wine_fermented=Sugar Cane Wine
-
 fluid.fluid_booze_fruit_juice=Fruit Juice
 fluid.fluid_booze_fruit_wine_fermented=Fruit Wine
-
-
 fluid.fluid_booze_cactus_juice=Cactus Juice
 fluid.fluid_booze_cactus_wine_fermented=Cactus Wine
+fluid.fluid_booze_rum=Rum
+fluid.fluid_booze_tequila=Tequila
+fluid.fluid_booze_calvados=Calvados
+fluid.fluid_booze_schnapps=Schnapps
+fluid.fluid_booze_brandy=Brandy
+fluid.fluid_booze_vodka=Vodka

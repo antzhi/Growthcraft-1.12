@@ -5,9 +5,10 @@ import growthcraft.apples.shared.init.GrowthcraftApplesItems;
 import growthcraft.cellar.shared.CellarRegistry;
 import growthcraft.cellar.shared.booze.BoozeUtils;
 import growthcraft.cellar.shared.config.GrowthcraftCellarConfig;
+import growthcraft.core.shared.CoreRegistry;
 import growthcraft.core.shared.client.render.utils.ItemRenderUtils;
+import growthcraft.core.shared.fluids.FluidTag;
 import growthcraft.core.shared.item.OreItemStacks;
-import growthcraft.distillery.GrowthcraftDistillery;
 import growthcraft.distillery.shared.Reference;
 import growthcraft.cellar.shared.GrowthcraftCellarApis;
 import growthcraft.cellar.shared.booze.BoozeRegistryHelper;
@@ -115,6 +116,9 @@ public class Init {
     public static void registerItemColorHandlers() {
         ItemRenderUtils.registerItemColorHandler(GrowthcraftDistilleryItems.spirit.getItem());
         ItemRenderUtils.registerItemColorHandler(GrowthcraftDistilleryItems.sugarCaneWine.getItem());
+        ItemRenderUtils.registerItemColorHandler(GrowthcraftDistilleryItems.spirit.getItem());
+        ItemRenderUtils.registerItemColorHandler(GrowthcraftDistilleryItems.cactusWine.getItem());
+        ItemRenderUtils.registerItemColorHandler(GrowthcraftDistilleryItems.fruitWine.getItem());
     }
 
     @SideOnly(Side.CLIENT)
@@ -165,6 +169,12 @@ public class Init {
         BoozeRegistryHelper.registerBoozeRenderers(sugarCaneBooze, GrowthcraftDistilleryBlocks.caneWineFluidBlocks);
     }
 
+
+
+    //TODO: move this in the appropriate class
+    public static final FluidTag DISTILLED = CoreRegistry.instance().fluidTags().createTag("distilled");
+    public static final FluidTag AGED = CoreRegistry.instance().fluidTags().createTag("aged");
+
     private static void registerFermentations() {
 
         final int fermentTime = GrowthcraftCellarConfig.fermentTime;
@@ -185,7 +195,7 @@ public class Init {
 
 
         for(SpiritTypes type: SpiritTypes.values()){
-            GrowthcraftCellarApis.boozeBuilderFactory.create(spiritBooze[type.ordinal()].getFluid())
+            GrowthcraftCellarApis.boozeBuilderFactory.create(spiritBooze[type.ordinal()].getFluid()).tags(DISTILLED)
                     .getEffect().setTipsy(BoozeUtils.alcoholToTipsy(0.45f), TickUtils.seconds(45));
         }
 

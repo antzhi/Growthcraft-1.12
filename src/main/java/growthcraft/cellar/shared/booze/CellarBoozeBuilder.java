@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import growthcraft.cellar.shared.CellarRegistry;
 import growthcraft.cellar.shared.booze.BoozeEffect;
 import growthcraft.cellar.shared.processing.common.Residue;
+import growthcraft.cellar.shared.processing.distilling.IDistillingRecipe;
 import growthcraft.core.shared.CoreRegistry;
 import growthcraft.core.shared.definition.IMultiFluidStacks;
 import growthcraft.core.shared.fluids.FluidTag;

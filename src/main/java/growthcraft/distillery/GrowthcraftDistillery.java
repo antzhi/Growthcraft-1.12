@@ -41,8 +41,8 @@ public class GrowthcraftDistillery {
     }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
-        proxy.init();
         Init.initBoozes();
+        proxy.init();
     }
 
     @Mod.EventHandler

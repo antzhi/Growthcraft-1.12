@@ -11,6 +11,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 public class BlockStill extends BlockRotatableCellarContainer  {
     public BlockStill(String unlocalizedName) {
         super(Material.IRON);
@@ -43,5 +45,15 @@ public class BlockStill extends BlockRotatableCellarContainer  {
     @Override
     public boolean isFullBlock(IBlockState state) {
         return false;
+    }
+
+    @Override
+    public int quantityDropped(Random random) {
+        return 1;
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+        return 0;
     }
 }
